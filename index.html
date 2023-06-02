@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="opening hide-UI view-2D zoom-large data-close controls-close">
+
+    <div id="navbar">
+        <button id="myBtn">Open Modal</button>
+        <a id="toggle-data" href="#data"><i class="icon-data"></i>Data</a>
+        <h1>Sistema Solar<br></h1>
+        <a id="toggle-controls" href="#controls"><i class="icon-controls"></i>Controls</a>
+    </div>
+    <div id="data">
+        <!-- <a id="sunId" class="sun" title="sun" href="#sunspeed" onclick="funcx(this.id)">Sun</a> -->
+        <a id="mercuryId" class="mercury" title="mercury" href="#mercuryspeed" onclick="funcx(this.id)">Mercurio</a>
+        <a id="venusId" class="venus" title="venus" href="#venusspeed" onclick="funcx(this.id)">Venus</a>
+        <a id="earthId" class="earth active" title="earth" href="#earthspeed" onclick="funcx(this.id)">Tierra</a>
+        <a id="marsId" class="mars" title="mars" href="#marsspeed" onclick="funcx(this.id)">Marte</a>
+        <a id="jupiterId" class="jupiter" title="jupiter" href="#jupiterspeed" onclick="funcx(this.id)">Jupiter</a>
+        <a id="saturnId" class="saturn" title="saturn" href="#saturnspeed" onclick="funcx(this.id)">Saturno</a>
+        <a id="uranusId" class="uranus" title="uranus" href="#uranusspeed" onclick="funcx(this.id)">Urano</a>
+        <a id="neptuneId" class="neptune" title="neptune" href="#neptunespeed" onclick="funcx(this.id)">Neptuno</a>
+    </div>
+    <!-- <div id="controls">
+        <label class="set-view">
+            <input type="checkbox">
+        </label>
+        <label class="set-zoom">
+            <input type="checkbox">
+        </label>
+        <label>
+            <input type="radio" class="set-speed" name="scale" checked>
+            <span>Speed</span>
+        </label>
+        <label>
+            <input type="radio" class="set-size" name="scale">
+            <span>Size</span>
+        </label>
+        <label>
+            <input type="radio" class="set-distance" name="scale">
+            <span>Distance</span>
+        </label>
+    </div> -->
+    <div id="universe" class="scale-stretched">
+        <div id="galaxy">
+            <div id="solar-system" class="earth">
+                <div id="mercury" class="orbit">
+                    <div class="pos">
+                        <div class="planet">
+                            <dl class="infos">
+                                <dt>Mercury</dt>
+                                <dd><span></span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div id="venus" class="orbit">
+                    <div class="pos">
+                        <div class="planet">
+                            <dl class="infos">
+                                <dt>Venus</dt>
+                                <dd><span></span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div id="earth" class="orbit">
+                    <div class="pos">
+                        <div class="orbit">
+                            <div class="pos">
+                                <div class="moon"></div>
+                            </div>
+                        </div>
+                        <div class="planet">
+                            <dl class="infos">
+                                <dt>Earth</dt>
+                                <dd><span></span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div id="mars" class="orbit">
+                    <div class="pos">
+                        <div class="planet">
+                            <dl class="infos">
+                                <dt>Mars</dt>
+                                <dd><span></span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div id="jupiter" class="orbit">
+                    <div class="pos">
+                        <div class="planet">
+                            <dl class="infos">
+                                <dt>Jupiter</dt>
+                                <dd><span></span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div id="saturn" class="orbit">
+                    <div class="pos">
+                        <div class="planet">
+                            <div class="ring"></div>
+                            <dl class="infos">
+                                <dt>Saturn</dt>
+                                <dd><span></span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div id="uranus" class="orbit">
+                    <div class="pos">
+                        <div class="planet">
+                            <dl class="infos">
+                                <dt>Uranus</dt>
+                                <dd><span></span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div id="neptune" class="orbit">
+                    <div class="pos">
+                        <div class="planet">
+                            <dl class="infos">
+                                <dt>Neptune</dt>
+                                <dd><span></span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div id="sun">
+                    <dl class="infos">
+                        <dt>Sun</dt>
+                        <dd><span></span></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Detalle del planeta</h2>
+            </div>
+            <div class="modal-body">
+                <div id="modal-content-container"></div>
+                <div class="table-wrapper">
+                    <table class="fl-table">
+                        <!-- <caption>Detalle del planeta</caption> -->
+
+                         <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Venus.png/640px-Venus.png" alt=""> -->
+
+                        <div id="data-image"></div>
+                        <div id="data-title" class="title-content"></div>
+                        <tbody>
+                            <tr>
+                                <th>Distancia orbital (km)</th>
+                                <td id="data-1">$820,180</td>
+
+                            </tr>
+                            <tr>
+                                <th>Radio ecuatorial (km)</th>
+                                <td id="data-2">$850,730</td>
+
+                            </tr>
+                            <tr>
+                                <th>Volumen (km3)</th>
+                                <td id="data-3">83%</td>
+                            </tr>
+                            <tr>
+                                <th>Masa (kg)</th>
+                                <td id="data-4">83%</td>
+                            </tr>
+                            <tr>
+                                <th>Densidad (g/cm3)</th>
+                                <td id="data-5">83%</td>
+                            </tr>
+                            <tr>
+                                <th>Gravedad en superficie (m/s2)</th>
+                                <td id="data-6">83%</td>
+                            </tr>
+                            <tr>
+                                <th>Velocidad de escape (km/h)</th>
+                                <td id="data-7">83%</td>
+                            </tr>
+                            <tr>
+                                <th>Duración del día</th>
+                                <td id="data-8">83%</td>
+                            </tr>
+                            <tr>
+                                <th>Duración del año</th>
+                                <td id="data-9">83%</td>
+                            </tr>
+                            <tr>
+                                <th>Velocidad de su órbita alrededor del Sol (km/h)</th>
+                                <td id="data-10">83%</td>
+                            </tr>
+                            <tr>
+                                <th>Composición de la atmósfera (exosfera)</th>
+                                <td id="data-11">83%</td>
+                            </tr>
+                            <tr>
+                                <th>Lunas descubiertas</th>
+                                <td id="data-12">83%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div> -->
+        </div>
+
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape("%3Cscript src='js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+        }
+
+
+        var planetData = {
+            "mercuryId": {
+                "title": "El Planeta Mercurio",
+                "distance": "57 909 227",
+                "ratio": "2 439",
+                "volume": "60 827 208 742",
+                "mass": "330 104 x 10^18",
+                "density": "5.427",
+                "gravity": "3.7",
+                "escape_velocity": "15 300",
+                "day_duration": "58.6 días terrestres",
+                "year_duration": "87.87 días terrestres",
+                "speed_orbit": "170 503",
+                "composition": "Oxígeno, Sodio, Hidrógeno, Helio y Potasio",
+                "moons": "-",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Mercury_In_Color-Prockter07_centered-_by_Merlin2525.svg/250px-Mercury_In_Color-Prockter07_centered-_by_Merlin2525.svg.png"
+            },
+
+            "venusId": {
+                "title": "El Planeta Venus",
+                "distance": "108 209 475",
+                "ratio": "6 051",
+                "volume": "928 415 345 893",
+                "mass": "4.867.320 x 1018",
+                "density": "5.243",
+                "gravity": "8.87",
+                "escape_velocity": "37 296",
+                "day_duration": "116 días y 18 horas terrestres",
+                "year_duration": "225 días terrestres",
+                "speed_orbit": "126 074",
+                "composition": "Dióxido de Carbono y Nitrógeno",
+                "moons": "-",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Venus.png/640px-Venus.png"
+            },
+            "earthId": {
+                "title": "El Planeta Tierra",
+                "distance": "149 598 262",
+                "ratio": "6 371",
+                "volume": "1 083 206 916 846",
+                "mass": "5 972 190  x 10^18",
+                "density": "5.513",
+                "gravity": "9.8",
+                "escape_velocity": "40 284",
+                "day_duration": "23 horas y 56 minutos",
+                "year_duration": "365 días, 6 horas y 9,76 minutos",
+                "speed_orbit": "107 218",
+                "composition": "Oxígeno y Nitrógeno.",
+                "moons": "1",
+                "image": "https://www.ambientum.com/wp-content/uploads/2019/07/planeta-tierra-mundo-696x696.png"
+            },
+
+
+            "marsId": {
+                "title": "El Planeta Marte",
+                "distance": "227 943 824",
+                "ratio": "3 389",
+                "volume": "163 115 609 799",
+                "mass": "641 693 x 10^18",
+                "density": "3 934",
+                "gravity": "3.71",
+                "escape_velocity": "18 108",
+                "day_duration": "24 horas, 37 minutos",
+                "year_duration": "687 días terrestres",
+                "speed_orbit": "86 677",
+                "composition": "Dióxido de Carbono, Nitrógeno y Argón",
+                "moons": "2",
+                "image": "https://cdn.pixabay.com/photo/2021/04/05/15/52/mars-6153858_1280.png"
+            },
+
+
+            "jupiterId": {
+                "title": "El Planeta Jupiter",
+                "distance": "778 340 821",
+                "ratio": "69 911",
+                "volume": "1 431 281 810 739 360",
+                "mass": "1 898 130 x 10^21",
+                "density": "1.326",
+                "gravity": "24.79",
+                "escape_velocity": "216 720",
+                "day_duration": "9 horas, 56 minutos",
+                "year_duration": "12 años terrestres",
+                "speed_orbit": "47.002",
+                "composition": "Hidrógeno y Helio",
+                "moons": "79",
+                "image": "https://www.solarsystemscope.com/spacepedia/images/handbook/renders/jupiter.png"
+            },
+
+
+
+            "saturnId": {
+                "title": "El Planeta Saturno",
+                "distance": "1 426 666 422",
+                "ratio": "58 238",
+                "volume": "827 129 915 150 897",
+                "mass": "568 319 x 10^21",
+                "density": "0.687",
+                "gravity": "10.4",
+                "escape_velocity": "129 924",
+                "day_duration": "10 horas, 34 minutos",
+                "year_duration": "29 años terrestres",
+                "speed_orbit": "129 924",
+                "composition": "Hidrógeno y Helio",
+                "moons": "83",
+                "image": "https://cdn.pixabay.com/photo/2019/07/03/12/14/saturn-4314403_1280.png"
+            },
+
+
+
+            "uranusId": {
+                "title": "El Planeta Urano",
+                "distance": "2 870 658 186",
+                "ratio": "25 362",
+                "volume": "68 334 355 695 584",
+                "mass": "86 810 300 x 10^21",
+                "density": "1.270",
+                "gravity": "8.87",
+                "escape_velocity": "76 698",
+                "day_duration": "17 horas, 14 minutos",
+                "year_duration": "84 años terrestres",
+                "speed_orbit": "24 477",
+                "composition": "Hidrógeno, Helio y Metano",
+                "moons": "27",
+                "image": "https://cdn.pixabay.com/photo/2021/04/05/15/54/uranus-6153865_1280.png"
+            },
+
+
+            "neptuneId": {
+                "title": "El Planeta Neptuno",
+                "distance": "4 498 396 441",
+                "ratio": "24 622",
+                "volume": "62 525 703 987 412",
+                "mass": "102.412 x 10^21",
+                "density": "1.638",
+                "gravity": "11.15",
+                "escape_velocity": "84 816",
+                "day_duration": "16 horas, 6 minutos",
+                "year_duration": "165 años terrestres",
+                "speed_orbit": "19 566",
+                "composition": "Hidrógeno, Helio y Metano",
+                "moons": "14",
+                "image": "https://cdn.pixabay.com/photo/2021/04/05/15/55/neptune-6153867_1280.png"
+            },
+        };
+
+
+
+        function funcx(id) {
+            // alert(id);
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById(id);
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+
+            var modalContentContainer = document.getElementById("modal-content-container");
+
+            var data1 = document.getElementById("data-1");
+            var data2 = document.getElementById("data-2");
+            var data3 = document.getElementById("data-3");
+            var data4 = document.getElementById("data-4");
+            var data5 = document.getElementById("data-5");
+            var data6 = document.getElementById("data-6");
+            var data7 = document.getElementById("data-7");
+            var data8 = document.getElementById("data-8");
+            var data9 = document.getElementById("data-9");
+            var data10 = document.getElementById("data-10");
+            var data11 = document.getElementById("data-11");
+            var data12 = document.getElementById("data-12");
+            var dataImage = document.getElementById("data-image");
+            var dataTitle = document.getElementById("data-title");
+
+            btn.onclick = function () {
+                // var dynamicContent = "<h2>Contenido Dinámico</h2><p>Este es un ejemplo de contenido dinámico en el modal.</p>";
+                var data1Content = planetData[id]["distance"];
+                var data2Content = planetData[id]["ratio"];
+                var data3Content = planetData[id]["volume"];
+                var data4Content = planetData[id]["mass"];
+                var data5Content = planetData[id]["density"];
+                var data6Content = planetData[id]["gravity"];
+                var data7Content = planetData[id]["escape_velocity"];
+                var data8Content = planetData[id]["day_duration"];
+                var data9Content = planetData[id]["year_duration"];
+                var data10Content = planetData[id]["speed_orbit"];
+                var data11Content = planetData[id]["composition"];
+                var data12Content = planetData[id]["moons"];
+                var dataTitleContent = planetData[id]["title"];
+                var dataImageContent = `<img src=${planetData[id]["image"]} style = height:110px;>`;
+                // modalContentContainer.innerHTML = dynamicContent;
+                data1.innerHTML = data1Content;
+                data2.innerHTML = data2Content;
+                data3.innerHTML = data3Content;
+                data4.innerHTML = data4Content;
+                data5.innerHTML = data5Content;
+                data6.innerHTML = data6Content;
+                data7.innerHTML = data7Content;
+                data8.innerHTML = data8Content;
+                data9.innerHTML = data9Content;
+                data10.innerHTML = data10Content;
+                data11.innerHTML = data11Content;
+                data12.innerHTML = data12Content;
+                dataImage.innerHTML = dataImageContent;
+                dataTitle.innerHTML = dataTitleContent;
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+
+        // Get the modal
+
+
+    </script>
+    <script src="js/prefixfree.min.js"></script>
+    <script src="js/scripts.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script> -->
+    <script src="js/data.js"></script>
+</body>
+
+</html>
